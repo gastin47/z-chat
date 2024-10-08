@@ -1,0 +1,62 @@
+<!-- views/room.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Групповой звонок</title>
+    <meta charset="UTF-8">
+    <style>
+        /* Простые стили для размещения видео */
+        #video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 10px;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            background-color: black;
+        }
+        #name-entry {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #name-entry input {
+            padding: 10px;
+            font-size: 18px;
+        }
+        #name-entry button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Поле для ввода имени -->
+    <div id="name-entry">
+        <input type="text" id="user-name" placeholder="Введите ваше имя">
+        <button id="join-btn">Присоединиться</button>
+    </div>
+    <!-- Контейнер для видео -->
+    <div id="video-grid"></div>
+
+    <!-- Подключение Socket.io -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Подключение PeerJS -->
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+    <!-- Передача ROOM_ID в скрипт -->
+    <script>
+        const ROOM_ID = "<%= roomId %>";
+    </script>
+    <!-- Подключение клиентского скрипта -->
+    <script src="/js/script.js"></script>
+</body>
+</html>
