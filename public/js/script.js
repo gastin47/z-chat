@@ -94,3 +94,12 @@ function addVideoStream(video, stream, userName) {
     videoContainer.appendChild(nameLabel);
     videoGrid.appendChild(videoContainer);
 }
+const shareButton = document.getElementById('share-btn');
+shareButton.addEventListener('click', () => {
+    const roomURL = window.location.href;
+    navigator.clipboard.writeText(roomURL).then(() => {
+        alert('Ссылка на комнату скопирована!');
+    }).catch(err => {
+        console.error('Ошибка при копировании ссылки: ', err);
+    });
+});

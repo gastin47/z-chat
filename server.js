@@ -32,6 +32,11 @@ io.on('connection', socket => {
         });
     });
 });
+const port = process.env.PORT || 3000;
+server.listen(port, () => {
+    console.log(`Сервер запущен на порту ${port}`);
+});
+
 
 // Запуск сервера на порту 3000
 server.listen(3000, () => {
